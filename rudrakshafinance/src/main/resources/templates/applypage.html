@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply Page</title>
+
+<!-- Link to CSS file -->
+<link rel="stylesheet" href="assets/css/apply.css">
+</head>
+<body>
+	<ul class="nav">
+		<li>
+			<button onclick="window.location.href='/'"
+				style="color: white; background-color: #FF4500; border: none; padding: 10px 20px; cursor: pointer;">HOME</button>
+		</li>
+		<li onclick="showLogin()">CLIENT</li>
+		<li onclick="showContactUs()">INVESTOR</li>
+		<li onclick="showSignup()">DSA</li>
+		<li onclick="showForgotPassword()">CONNECTOR</li>
+		<li onclick="showSubscribe()">CONTACT US</li>
+	</ul>
+	<div class="wrapper">
+		<div class="rec-prism">
+
+			<div class="face face-front">
+				<div class="content">
+					<h2>Login As Client</h2>
+					<form>
+						<div class="field-wrapper">
+							<input type="text" name="username" placeholder="username"
+								required> <label>Name</label>
+						</div>
+						<div class="field-wrapper">
+							<input type="text" name="mobile" placeholder="mobile number"
+								pattern="[6-9]{1}[0-9]{9}" maxlength="10" required> <label>Mobile
+								Number</label>
+						</div>
+						<div class="field-wrapper">
+							<textarea name="profile" placeholder="your profile"></textarea>
+							<label>Profile</label>
+						</div>
+
+						<div class="field-wrapper">
+							<input type="submit" value="Submit">
+						</div>
+						<span class="psw" onclick="showSubscribe()">Contanct Us</span>
+					</form>
+				</div>
+			</div>
+			<div class="face face-right">
+				<div class="content">
+					<h2>Login As DSA</h2>
+					<form>
+						<div class="field-wrapper">
+							<input type="text" name="username" placeholder="username"
+								required> <label>Name</label>
+						</div>
+						<div class="field-wrapper">
+							<input type="text" name="mobile" placeholder="mobile number"
+								pattern="[6-9]{1}[0-9]{9}" maxlength="10" required> <label>Mobile
+								Number</label>
+						</div>
+						<div class="field-wrapper">
+							<textarea name="profile" placeholder="your profile"></textarea>
+							<label>Profile</label>
+						</div>
+
+						<div class="field-wrapper">
+							<input type="submit" value="Submit">
+						</div>
+						<span class="psw" onclick="showSubscribe()">Contact Us</span>
+					</form>
+				</div>
+			</div>
+			<div class="face face-left">
+				<div class="content">
+					<h2>Login As Investor</h2>
+					<form>
+						<div class="field-wrapper">
+							<input type="text" name="username" placeholder="username"
+								required> <label>Name</label>
+						</div>
+						<div class="field-wrapper">
+							<input type="text" name="mobile" placeholder="mobile number"
+								pattern="[6-9]{1}[0-9]{9}" maxlength="10" required> <label>Mobile
+								Number</label>
+						</div>
+						<div class="field-wrapper">
+							<textarea name="profile" placeholder="your profile"></textarea>
+							<label>Profile</label>
+						</div>
+
+
+						<div class="field-wrapper">
+							<input type="submit" value="Submit">
+						</div>
+						<span class="psw" onclick="showSubscribe()">Contact Us</span>
+					</form>
+				</div>
+			</div>
+			<div class="face face-back">
+				<div class="content">
+					<h2>Login As Connector</h2>
+					<form>
+						<div class="field-wrapper">
+							<input type="text" name="username" placeholder="username"
+								required> <label>Name</label>
+						</div>
+						<div class="field-wrapper">
+							<input type="text" name="mobile" placeholder="mobile number"
+								pattern="[6-9]{1}[0-9]{9}" maxlength="10" required> <label>Mobile
+								Number</label>
+						</div>
+						<div class="field-wrapper">
+							<textarea name="profile" placeholder="your profile"></textarea>
+							<label>Profile</label>
+						</div>
+
+						<div class="field-wrapper">
+							<input type="submit" value="Submit">
+						</div>
+						<span class="psw" onclick="showSubscribe()">Contact Us</span>
+					</form>
+				</div>
+			</div>
+
+			<div class="face face-top">
+				<div class="content">
+					<h2>Contact</h2>
+					<form>
+						<div class="field-wrapper">
+							<input type="text" name="name" placeholder="name" required>
+							<label>Name</label>
+						</div>
+						<div class="field-wrapper">
+							<input type="text" name="mobile" placeholder="mobile number"
+								required> <label>Mobile Number</label>
+						</div>
+
+						<div class="field-wrapper">
+							<input type="submit" value="Submit">
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="face face-bottom">
+				<div class="content">
+					<div class="thank-you-msg">
+						<b>Thank you!</b>
+						<h6>Rudraksha Financial Services</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Link to JavaScript file -->
+	<!-- Main JS File -->
+	<script src="assets/js/apply.js"></script>
+</body>
+</html>

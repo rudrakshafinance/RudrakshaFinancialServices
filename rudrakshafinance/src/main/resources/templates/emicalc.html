@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMI Calculator</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<style>
+body {
+    background: url('assets/img/emibg.jpg');
+     background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+	}
+.background-wrapper {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@media ( max-width : 480px) {
+	body {
+		padding-top: 30px;
+	}
+}
+
+.loan-calculator {
+	font-family: "Roboto", sans-serif;
+	width: 90%; /* Use percentage for flexibility */
+	max-width: 600px; /* Keep it from growing too wide on large screens */
+	margin: 24px auto;
+	background: #fff;
+	box-shadow: 0 12px 50px -11px rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	color: #e63946;
+	overflow: hidden;
+	/* Optional: for inner spacing */
+	box-sizing: border-box; /* Ensure padding doesn't expand the width */
+}
+
+.loan-calculator, .loan-calculator * {
+	box-sizing: border-box;
+}
+
+.loan-calculator .top {
+	background: #14213d;
+	color: #fff;
+	padding: 32px;
+}
+
+.loan-calculator .top h2 {
+	color: white;
+	margin-top: 0;
+}
+
+.loan-calculator form {
+	display: flex;
+	gap: 8px;
+	justify-content: space-between;
+}
+
+.loan-calculator .title {
+	margin-bottom: 16px;
+}
+
+.loan-calculator form input {
+	font-size: 20px;
+	padding: 8px 24px;
+	width: 100%;
+}
+
+.loan-calculator .result {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.loan-calculator .result .left {
+	width: 100%;
+	padding: 8px 32px;
+}
+
+.loan-calculator .left h3 {
+	font-size: 16px;
+	font-weight: 400;
+	margin-bottom: 8px;
+}
+
+.loan-calculator .result .value {
+	font-size: 30px;
+	font-weight: 900;
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgba(20, 33, 61, 0.2);
+}
+
+.loan-calculator .result .value::before {
+	content: "₹";
+	font-size: 24px;
+	font-weight: 400;
+	margin-right: 6px;
+	opacity: 0.4;
+}
+
+.loan-calculator .calculate-btn {
+	background: #14213d;
+	color: #fff;
+	border: none;
+	padding: 8px 32px;
+	border-radius: 8px;
+	font-size: 18px;
+	font-weight: 900;
+	cursor: pointer;
+	margin: 24px 0;
+}
+
+.loan-calculator .right {
+	width: 50%;
+}
+
+@media ( max-width : 650px) {
+	.loan-calculator {
+		width: 90%;
+		max-width: 500px;
+	}
+	.loan-calculator form {
+		flex-direction: column;
+		gap: 20px;
+	}
+	.loan-calculator .result {
+		flex-direction: column;
+		text-align: center;
+	}
+}
+</style>
+
+
+<!-- Main CSS File -->
+<link href="assets/css/main.css" rel="stylesheet">
+</head>
+<body>
+ <div class="background-wrapper" >
+	<header id="header" class="header d-flex align-items-center fixed-top">
+		<div
+			class="container-fluid container-xl position-relative d-flex align-items-center">
+
+			<a href="index.html" class="logo d-flex align-items-center me-auto">
+				<!-- Uncomment the line below if you also wish to use an image logo -->
+				<img src="assets/img/logo.png" alt="">
+				<h1 class="sitename">RUDRAKSHA FINANCIAL SERVICES</h1>
+			</a>
+
+	
+			<a class="cta-btn" href="/" style="color: white; background-color: #FF4500; border: none; padding: 5px 30px; cursor: pointer; font-size: 18px;">Home</a>
+		</div>
+	</header>
+
+	<div class="loan-calculator">
+		<div class="top">
+			<h2>EMI Calculator</h2>
+
+			<form action="#">
+				<div class="group">
+					<div class="title">Amount</div>
+					<input type="number" placeholder="0" class="loan-amount" min="0" />
+				</div>
+
+				<div class="group">
+					<div class="title">Interest Rate</div>
+					<input type="number" placeholder="0" class="interest-rate" min="0"
+						step="0.01" />
+				</div>
+
+				<div class="group">
+					<div class="title">Tenure (in years)</div>
+					<input type="number" placeholder="0" class="loan-tenure" min="0"
+						step="0.1" />
+				</div>
+			</form>
+		</div>
+
+		<div class="result">
+			<div class="left">
+				<div class="loan-emi">
+					<h3>Loan EMI</h3>
+					<div class="value">123</div>
+				</div>
+
+				<div class="total-interest">
+					<h3>Total Interest Payable</h3>
+					<div class="value">1234</div>
+				</div>
+
+				<div class="total-amount">
+					<h3>Total Amount</h3>
+					<div class="value">12345</div>
+				</div>
+
+				<button class="calculate-btn">Calculate</button>
+			</div>
+
+			<div class="right">
+				<canvas id="myChart" width="400" height="400"></canvas>
+			</div>
+		</div>
+	</div>
+</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
+
+
+	<script>
+const loanAmountInput = document.querySelector(".loan-amount");
+const interestRateInput = document.querySelector(".interest-rate");
+const loanTenureInput = document.querySelector(".loan-tenure");
+
+const loanEMIValue = document.querySelector(".loan-emi .value");
+const totalInterestValue = document.querySelector(".total-interest .value");
+const totalAmountValue = document.querySelector(".total-amount .value");
+
+const calculateBtn = document.querySelector(".calculate-btn");
+
+let loanAmount = parseFloat(loanAmountInput.value);
+let interestRate = parseFloat(interestRateInput.value);
+let loanTenure = parseFloat(loanTenureInput.value);
+
+let interest = interestRate / 12 / 100;
+
+let myChart;
+
+const checkValues = () => {
+  // let loanAmountValue = loanAmountInput.value;
+  // let interestRateValue = interestRateInput.value;
+  // let loanTenureValue = loanTenureInput.value;
+
+  // let regexNumber = /^[0-9]+$/;
+  // if (!loanAmountValue.match(regexNumber)) {
+  //   loanAmountInput.value = "10000";
+  // }
+
+  // if (!loanTenureValue.match(regexNumber)) {
+  //   loanTenureInput.value = "12";
+  // }
+
+  // let regexDecimalNumber = /^(\d*\.)?\d+$/;
+  // if (!interestRateValue.match(regexDecimalNumber)) {
+  //   interestRateInput.value = "7.5";
+  // }
+};
+
+const displayChart = (totalInterestPayableValue) => {
+  const ctx = document.getElementById("myChart").getContext("2d");
+  myChart = new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: ["Total Interest", "Principal Loan Amount"],
+      datasets: [
+        {
+          data: [totalInterestPayableValue, loanAmount],
+          backgroundColor: ["#e63946", "#14213d"],
+          borderWidth: 0,
+        },
+      ],
+    },
+  });
+};
+
+const updateChart = (totalInterestPayableValue) => {
+  myChart.data.datasets[0].data[0] = totalInterestPayableValue;
+  myChart.data.datasets[0].data[1] = loanAmount;
+  myChart.update();
+};
+
+const refreshInputValues = () => {
+  loanAmount = parseFloat(loanAmountInput.value) || 0;
+  interestRate = parseFloat(interestRateInput.value) || 0;
+  loanTenure = (parseFloat(loanTenureInput.value) || 0) * 12;
+  interest = interestRate / 12 / 100;
+};
+
+const calculateEMI = () => {
+  refreshInputValues();
+
+  if (loanAmount === 0 || interestRate === 0 || loanTenure === 0) {
+    return 0;
+  }
+
+  let emi =
+    loanAmount *
+    interest *
+    (Math.pow(1 + interest, loanTenure) /
+      (Math.pow(1 + interest, loanTenure) - 1));
+
+  return Math.round(emi);
+};
+
+
+const updateData = (emi) => {
+  if (emi === 0) {
+    loanEMIValue.innerHTML = "0";
+    totalAmountValue.innerHTML = "0";
+    totalInterestValue.innerHTML = "0";
+    return;
+  }
+
+  loanEMIValue.innerHTML = emi;
+
+  let totalAmount = Math.round(loanTenure * emi);
+  totalAmountValue.innerHTML = totalAmount;
+
+  let totalInterestPayable = Math.round(totalAmount - loanAmount);
+  totalInterestValue.innerHTML = totalInterestPayable;
+
+  if (myChart) {
+    updateChart(totalInterestPayable);
+  } else {
+    displayChart(totalInterestPayable);
+  }
+};
+
+
+const init = () => {
+  let emi = calculateEMI();
+  updateData(emi);
+};
+
+init();
+
+calculateBtn.addEventListener("click", init);
+</script>
+<script>
+  const bgImg = new Image();
+  bgImg.src = 'assets/img/emibg.jpg';
+
+  bgImg.onload = function () {
+    const wrapper = document.querySelector('.background-wrapper');
+    wrapper.style.backgroundImage = "url('assets/img/emibg.jpg')";
+    wrapper.style.backgroundSize = "cover";
+    wrapper.style.backgroundPosition = "center";
+    wrapper.style.backgroundRepeat = "no-repeat";
+    wrapper.style.display = "block";
+  };
+</script>
+</body>
+</html>
+

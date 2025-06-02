@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Popup Demo</title>
+<style>
+/* Popup styles */
+.popup {
+	display: none;
+	position: fixed;
+	top: 30%;
+	left: 35%;
+	width: 30%;
+	padding: 20px;
+	background-color: #fefefe;
+	border: 2px solid #444;
+	z-index: 9999;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.popup-show {
+	display: block;
+}
+
+.overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 9998;
+}
+
+.overlay-show {
+	display: block;
+}
+
+.close-btn {
+	float: right;
+	cursor: pointer;
+	color: red;
+}
+/* Call to Action Button - Centered and Orange */
+.cta-button {
+	display: block;
+	margin: 20px auto 0 auto; /* top margin + auto center */
+	padding: 10px 25px;
+	background-color: #FF4500; /* Change to orange */
+	color: white;
+	border: none;
+	border-radius: 6px;
+	font-weight: bold;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	text-align: center;
+}
+
+.cta-button:hover {
+	background-color: darkorange;
+}
+</style>
+</head>
+<body>
+
+	<h2>Welcome to Rudraksha Financial Services</h2>
+
+	<div class="overlay" id="overlay"></div>
+
+	<div class="popup animated-popup" id="popup">
+		<span class="close-btn" onclick="hidePopup()">✖</span>
+		<h2>🎉 Exclusive Loan Offers Just for You!</h2>
+		<p>
+			At <strong>Rudraksha Financial Services</strong>, we offer:
+		</p>
+		<ul>
+			<li>✅ Home Loans at competitive interest rates</li>
+			<li>✅ Loan Against Property (LAP)</li>
+			<li>✅ Balance Transfer + Top-Up</li>
+			<li>✅ Project Loans – newly launched</li>
+			<li>✅ Loans available even for low CIBIL score clients</li>
+		</ul>
+		<p>📉 Minimum ROI | ⚡ Fast Approval | 🤝 Personalized Support</p>
+
+		<button class="cta-button"
+			onclick="window.location.href='tel:+919713776077'">Call Us
+			Now</button>
+	</div>
+
+	<script>
+        function showPopup() {
+            document.getElementById('popup').classList.add('popup-show');
+            document.getElementById('overlay').classList.add('overlay-show');
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').classList.remove('popup-show');
+            document.getElementById('overlay').classList.remove('overlay-show');
+        }
+
+        // Automatically show popup when page loads
+        window.onload = function() {
+            showPopup();
+        };
+    </script>
+
+</body>
+</html>

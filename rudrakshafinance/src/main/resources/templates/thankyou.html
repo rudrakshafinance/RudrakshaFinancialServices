@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      background: url('assets/img/thanksbg.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .card {
+      background: rgba(51, 51, 51, 0.85); /* semi-transparent background */
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      transform: translateY(50px);
+      animation: slideUp 0.8s ease-out forwards;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ff4a17;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    a {
+      text-decoration: none;
+      padding: 10px 25px;
+      background: #ff4a17;
+      color: white;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    a:hover {
+      background: #d63d12;
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Application Submitted!</h1>
+    <p>Thanks for reaching out. We’ll review your request and follow up soon.</p>
+    <a href="/">Back to Home</a>
+  </div>
+
+</body>
+</html>

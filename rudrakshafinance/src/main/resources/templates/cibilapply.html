@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Loan Application for CIBIL Defaulters</title>
+ <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 15px;
+      background: url('assets/img/cibilbg.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 500px;
+      animation: slideUp 1.5s ease-out forwards;
+      opacity: 0;
+      box-sizing: border-box;
+      margin-top: 30px;
+    }
+
+    @keyframes slideUp {
+      0% {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      margin-top: 5px;
+      text-align: center;
+      color: #FF4500;
+      animation: fadeIn 2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+      color: #333;
+      font-weight: 600;
+    }
+
+    input, textarea, select {
+      padding: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 13px;
+      transition: all 0.3s ease;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #FF4500;
+      outline: none;
+      box-shadow: 0 0 5px rgba(31, 64, 55, 0.5);
+    }
+
+    .error {
+      color: red;
+      font-size: 12px;
+      margin-bottom: 10px;
+      display: none;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #FF4500;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #FF7F50;
+    }
+
+    .note {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    /* Small Screens (Mobile) */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 18px;
+      }
+
+      .container {
+        padding: 15px;
+        margin: 10px;
+      }
+
+      button {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+
+    /* Medium Screens (Tablets) */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 20px;
+      }
+
+      .container {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Loan Application for CIBIL Defaulters</h1>
+    <form id="loanForm">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" name="fullname" required />
+      <div class="error" id="nameError">Only letters allowed in name.</div>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required />
+      <div class="error" id="phoneError">Only numbers allowed in phone number.</div>
+
+      <label for="loantype">Loan Type</label>
+<select id="loantype" name="loantype" required>
+  <option value="" disabled selected>Select Loan Type</option>
+        <option value="home">Home Loan</option>
+        <option value="mortgage">Mortgage Loan</option>
+        <option value="bt+topup">Balance Transfer+TopUp Loan</option>
+         </select>
+<div class="error" id="loanTypeError">Please select a valid loan type.</div>
+     
+      <label for="loanamount">Loan Amount</label>
+      <input type="number" id="loanamount" name="loanamount" />
+      <div class="error" id="amountError">Only numbers allowed in loan amount.</div>
+
+      <label for="reason">Reason for Loan</label>
+      <textarea id="reason" name="reason" rows="1"></textarea>
+
+      <label for="cibilscore">Current CIBIL Score (Approx)</label>
+      <input type="number" id="cibilscore" name="cibilscore" />
+      <div class="error" id="cibilError">Only numbers allowed in CIBIL score.</div>
+
+      <button type="submit">Apply Now</button>
+    </form>
+    <div class="note">Note: We consider applications even with low or negative credit history.</div>
+  </div>
+
+ <script>
+  const form = document.getElementById('loanForm');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = {
+      fullname: document.getElementById('fullname').value,
+      phone: document.getElementById('phone').value,
+      loantype: document.getElementById('loantype').value,
+      loanamount: parseFloat(document.getElementById('loanamount').value),
+      reason: document.getElementById('reason').value,
+      cibilscore: parseInt(document.getElementById('cibilscore').value)
+    };
+
+    fetch('http://localhost:8080/api/defaulters', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => {
+      if (response.ok) {
+        // ✅ Redirect to thank you page
+        window.location.href = 'thankyou';
+      } else {
+        alert('Submission failed.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Something went wrong.');
+    });
+  });
+
+  // Input validation logic (optional)
+  form.addEventListener('input', function(e) {
+    const name = document.getElementById('fullname');
+    const phone = document.getElementById('phone');
+    const loanAmount = document.getElementById('loanamount');
+    const cibil = document.getElementById('cibilscore');
+
+    document.getElementById('nameError').style.display = /[^a-zA-Z\s]/.test(name.value) ? 'block' : 'none';
+    document.getElementById('phoneError').style.display = /[^0-9]/.test(phone.value) ? 'block' : 'none';
+    document.getElementById('amountError').style.display = /[^0-9]/.test(loanAmount.value) ? 'block' : 'none';
+    document.getElementById('cibilError').style.display = /[^0-9]/.test(cibil.value) ? 'block' : 'none';
+  });
+</script>
+
+</body>
+</html>
