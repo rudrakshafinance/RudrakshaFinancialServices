@@ -87,10 +87,28 @@ h6 {
   padding: 20px 0;
   transition: all 0.5s;
   z-index: 997;
+  width: 100%;
+  overflow: visible;
 }
 
+/* === Flex Container === */
+.header .container-fluid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100%;
+  min-width: 0;
+  gap: 10px;
+}
+
+/* === Logo (Left, Can Wrap) === */
 .header .logo {
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: visible;
 }
 
 .header .logo img {
@@ -99,24 +117,52 @@ h6 {
 }
 
 .header .logo h1 {
-  font-size: clamp(18px, 4vw, 20px);
+  font-size: 20px;
   margin: 0;
   font-weight: 700;
   color: var(--heading-color);
+  word-break: break-word;
+  white-space: normal; /* allow wrap */
 }
 
+/* === Nav Menu (Always Visible) === */
+.header .navmenu {
+  display: flex;
+  justify-content: flex-end;
+  gap: clamp(8px, 2vw, 16px);
+  flex: 1 1 auto;
+  overflow: visible;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  order: 2;
+  min-width: 0;
+}
+
+/* Nav Items Style */
+.header .navmenu li {
+  list-style: none;
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* === Apply Button (Right, Always Visible) === */
 .header .cta-btn,
 .header .cta-btn:focus {
   color: var(--contrast-color);
   font-size: 13px;
-  padding: 7px 25px;
-  margin: 0 0 0 30px;
+  padding: 7px 20px;
   border-radius: 4px;
   transition: 0.3s;
   text-transform: uppercase;
   border: 2px solid var(--contrast-color);
+  white-space: nowrap;
+  flex-shrink: 0;
+  order: 3;
 }
 
+/* Hover Effect */
 .header .cta-btn:hover,
 .header .cta-btn:focus:hover {
   color: var(--contrast-color);
@@ -124,25 +170,43 @@ h6 {
   border-color: var(--accent-color);
 }
 
-@media (max-width: 1200px) {
-  .header .logo {
-    order: 1;
+/* === Responsive Font Adjustments === */
+@media (max-width: 992px) {
+  .header .logo h1 {
+    font-size: 16px;
   }
-
   .header .cta-btn {
-    order: 2;
-    margin: 0 15px 0 0;
-    padding: 6px 15px;
-  }
-
-  .header .navmenu {
-    order: 3;
+    font-size: 12px;
+    padding: 6px 16px;
   }
 }
 
+@media (max-width: 768px) {
+  .header .logo h1 {
+    font-size: 14px;
+  }
+  .header .cta-btn {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header .logo h1 {
+    font-size: 12px;
+  }
+  .header .cta-btn {
+    font-size: 10px;
+    padding: 5px 12px;
+  }
+}
+
+/* === Optional Scroll Shadow === */
 .scrolled .header {
   box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
 }
+
+
 
 /* Global Header on Scroll
 ------------------------------*/
@@ -879,15 +943,17 @@ section,
 
 .hero h2 {
   margin: 0;
-  font-size: 48px;
   font-weight: 700;
   text-transform: uppercase;
+  font-size: clamp(24px, 5vw, 48px);
+  word-wrap: break-word;
+  text-align: left; /* default left align */
 }
 
 .hero p {
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   margin: 10px 0 0 0;
-  font-size: 24px;
+  font-size: clamp(14px, 3vw, 24px);
 }
 
 .hero .btn-get-started {
@@ -933,14 +999,9 @@ section,
 
 @media (max-width: 768px) {
   .hero h2 {
-    font-size: 32px;
-  }
-
-  .hero p {
-    font-size: 18px;
+    text-align: center; /* center heading on smaller screens */
   }
 }
-
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
