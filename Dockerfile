@@ -1,14 +1,23 @@
-# Start from OpenJDK base image
-FROM openjdk17-jdk-slim
+# Stage 1: Build the JAR using Maven
+FROM maven:3.8.7-openjdk-17-slim AS builder
 
-# Set the working directory inside the container
-WORKDIR app
+WORKDIR /app
 
-# Copy the JAR file from target to the container
-COPY targetrudrakshafinance-0.0.1-SNAPSHOT.jar app.jar
+# Copy pom.xml and source code
+COPY pom.xml .
+COPY src ./src
 
-# Expose port 8080
+# Build the project and skip tests (you can remove -DskipTests if you want to run tests)
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run the JAR with OpenJDK
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+# Copy the built jar from the builder stage
+COPY --from=builder /app/target/rudrakshafinance-0.0.1-SNAPSHOT.jar app.jar
+
 EXPOSE 8080
 
-# Run the JAR file
-ENTRYPOINT [java, -jar, app.jar]
+ENTRYPOINT ["java", "-jar", "app.jar"]
