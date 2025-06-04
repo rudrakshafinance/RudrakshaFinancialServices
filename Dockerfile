@@ -1,5 +1,5 @@
 # Stage 1: Build the JAR using Maven
-FROM maven:3.8.7-openjdk-17-slim AS builder
+FROM maven:3.8.7-jdk-17-slim AS builder
 
 WORKDIR /app
 
@@ -7,7 +7,7 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-# Build the project and skip tests (you can remove -DskipTests if you want to run tests)
+# Build the project and skip tests
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run the JAR with OpenJDK
