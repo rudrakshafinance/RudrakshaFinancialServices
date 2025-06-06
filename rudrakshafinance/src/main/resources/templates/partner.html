@@ -9,148 +9,161 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
 
   <style>
-   :root { 
-  --accent-color: #ff4a17;
-  --bg-dark: #2a2a2a;
-  --bg-light: #f8f9fa;
-  --white: #ffffff;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: var(--bg-light);
-  color: #333;
-  padding: 0;
-}
-
-header {
-  background: url('assets/img/partnerBg.jpg') no-repeat center center;
-  background-size: cover;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: var(--white);
-}
-
-header h1 {
-  font-size: 2rem;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.form-section {
-  width: 80%;
-  max-width: 500px;
-  margin: 60px auto;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 20px;
-  border-radius: 20px;
-  color: var(--white);
-}
-
-.form-section h2 {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  margin-top: 15px;
-  font-weight: 300;
-}
-
-input,
-textarea {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  margin-bottom: 10px;
-  background: #3a3a3a;
-  color: #fff;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: #bbb;
-}
-
-button {
-  background: var(--accent-color);
-  color: var(--white);
-  border: none;
-  padding: 12px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-  width: 100%;
-  transition: 0.3s ease;
-}
-
-button:hover {
-  background: #e14014;
-}
-
-.form-row {
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.form-group {
-  flex: 1;
-  min-width: 100%;
-}
-
-@media (min-width: 601px) {
-  .form-group {
-    min-width: 45%;
+  :root {
+    --accent-color: #ff4a17;
+    --bg-dark: #2a2a2a;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
   }
 
-  button {
-    width: 50%;
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
-}
 
-/* Responsive styles for screens <= 600px */
-@media (max-width: 600px) {
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-light);
+    color: #333;
+    padding: 0;
+  }
+
   header {
-    height: 400px;
-    padding: 20px;
+    background: url('assets/img/partnerBg.jpg') no-repeat center center / cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    padding: 40px 20px;
   }
 
   header h1 {
-    font-size: 1.5rem;
-    padding: 15px;
+    font-size: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
   }
 
   .form-section {
-    width: 90%;
-    margin: 30px auto;
-    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.65);
+    padding: 25px;
+    border-radius: 20px;
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
   }
 
-  .form-row {
-    flex-direction: column;
+  .form-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-weight: 300;
+    font-size: 0.95rem;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 10px;
+    background: #3a3a3a;
+    color: #fff;
+    font-size: 0.95rem;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #bbb;
   }
 
   button {
+    background: var(--accent-color);
+    color: var(--white);
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
     width: 100%;
+    transition: 0.3s ease;
   }
-}
 
+  button:hover {
+    background: #e14014;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .form-group {
+    flex: 1;
+    min-width: 100%;
+  }
+
+  @media (min-width: 601px) {
+    .form-group {
+      min-width: 45%;
+    }
+
+    button {
+      width: 50%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+
+    .form-section h2 {
+      font-size: 1.8rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    header {
+      padding: 40px 15px;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      padding: 15px;
+    }
+
+    .form-section {
+      width: 90%;
+      padding: 20px;
+    }
+
+    .form-section h2 {
+      font-size: 1.4rem;
+    }
+
+    label,
+    input,
+    textarea {
+      font-size: 0.9rem;
+    }
+
+    button {
+      font-size: 0.95rem;
+      width: 100%;
+    }
+  }
   </style>
 </head>
 <body>
@@ -158,73 +171,73 @@ button:hover {
   <!-- Header Section -->
   <header>
     <section class="form-section">
-    <h2>Become Partner</h2>
-   <form onsubmit="handleSubmit(event)">
-  <div class="form-row">
-    <div class="form-group">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" placeholder="Your Name" required />
-    </div>
-    <div class="form-group">
-      <label for="profile">Profile</label>
-      <input type="text" id="profile" name="profile" placeholder="Profile" required />
-    </div>
-  </div>
+      <h2>Become Partner</h2>
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <label for="profile">Profile</label>
+            <input type="text" id="profile" name="profile" placeholder="Profile" required />
+          </div>
+        </div>
 
-  <div class="form-row">
-    <div class="form-group">
-      <label for="phone">Mobile Number</label>
-      <input type="tel" id="phone" name="phone" placeholder="+91" required />
-    </div>
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" placeholder="username@gmail.com" />
-    </div>
-  </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Mobile Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="username@gmail.com" />
+          </div>
+        </div>
 
-  <label for="address">Address</label>
-  <textarea id="address" name="address" rows="3" placeholder="Enter Your Address"></textarea>
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="3" placeholder="Enter Your Address"></textarea>
 
-  <label for="business">Business Idea</label>
-  <textarea id="business" name="business" rows="3" placeholder="Tell us about your business or idea..."></textarea>
+        <label for="business">Business Idea</label>
+        <textarea id="business" name="business" rows="3" placeholder="Tell us about your business or idea..."></textarea>
 
-  <button type="submit" >Submit</button>
-</form>
-  </section>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
   </header>
 
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+
+      const data = {
+        name: document.getElementById("name").value,
+        profile: document.getElementById("profile").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        address: document.getElementById("address").value,
+        business: document.getElementById("business").value
+      };
+
+      fetch("http://localhost:8080/api/partners", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = "thankyou";
+        } else {
+          alert("Submission failed.");
+        }
+      })
+      .catch(error => {
+        console.error("Error submitting form:", error);
+      });
+    }
+  </script>
+
 </body>
-<script>
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    const data = {
-      name: document.getElementById("name").value,
-      profile: document.getElementById("profile").value,
-      phone: document.getElementById("phone").value,
-      email: document.getElementById("email").value,
-      address: document.getElementById("address").value,
-      business: document.getElementById("business").value
-    };
-
-    fetch("http://localhost:8080/api/partners", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(data)
-    })
-    .then(response => {
-      if (response.ok) {
-        window.location.href = "thankyou";
-      } else {
-        alert("Submission failed.");
-      }
-    })
-    .catch(error => {
-      console.error("Error submitting form:", error);
-    });
-  }
-</script>
-
 </html>
