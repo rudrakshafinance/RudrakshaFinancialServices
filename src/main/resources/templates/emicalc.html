@@ -1,31 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EMI Calculator</title>
+<title>EMI - Calculator</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<!-- Favicons -->
+<link href="assets/img/logo.png" rel="icon">
+<link href="assets/img/logo.png" rel="apple-touch-icon">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+<link href="assets/vendor/glightbox/css/glightbox.min.css"
+	rel="stylesheet">
+<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+<!-- Main CSS File -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+<link href="assets/css/main.css" rel="stylesheet">
 <style>
-body {
-    background: url('assets/img/emibg.jpg');
-     background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  
-	}
-.background-wrapper {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+body1 {
+	padding-top: 10vh;
 }
 
 @media ( max-width : 480px) {
-	body {
+	body1 {
 		padding-top: 30px;
 	}
 }
@@ -139,77 +153,79 @@ body {
 }
 </style>
 
-
-<!-- Main CSS File -->
-<link href="assets/css/main.css" rel="stylesheet">
 </head>
-<body>
- <div class="background-wrapper" >
-	<header id="header" class="header d-flex align-items-center fixed-top">
+<body class="index-page">
+
+	<header id="header" class="header d-flex align-items-center fixed-top"
+		style="background-color: rgba(0, 0, 0, 0.6); background-size: cover; background-position: center;">
 		<div
 			class="container-fluid container-xl position-relative d-flex align-items-center">
 
-			<a href="index.html" class="logo d-flex align-items-center me-auto">
-				<!-- Uncomment the line below if you also wish to use an image logo -->
-				<img src="assets/img/logo.png" alt="">
+			<a href="#" class="logo d-flex align-items-center me-auto"> <img
+				src="assets/img/logo.png" alt="">
 				<h1 class="sitename">RUDRAKSHA FINANCIAL SERVICES</h1>
-			</a>
-
-	
-			<a class="cta-btn" href="/" style="color: white; background-color: #FF4500; border: none; padding: 5px 30px; cursor: pointer; font-size: 18px;">Home</a>
+			</a> <a class="cta-btn" href="/">Home</a>
 		</div>
 	</header>
 
-	<div class="loan-calculator">
-		<div class="top">
-			<h2>EMI Calculator</h2>
+	<main class="main">
 
-			<form action="#">
-				<div class="group">
-					<div class="title">Amount</div>
-					<input type="number" placeholder="0" class="loan-amount" min="0" />
+		<!-- Hero Section -->
+		<section id="hero"
+			style="background-image: url('assets/img/emibg.jpg'); background-size: cover; background-position: center;">
+
+			<div class="loan-calculator">
+				<div class="top">
+					<h2>EMI Calculator</h2>
+
+					<form action="#">
+						<div class="group">
+							<div class="title">Amount</div>
+							<input type="number" placeholder="0" class="loan-amount" min="0" />
+						</div>
+
+						<div class="group">
+							<div class="title">Interest Rate</div>
+							<input type="number" placeholder="0" class="interest-rate"
+								min="0" step="0.01" />
+						</div>
+
+						<div class="group">
+							<div class="title">Tenure (in years)</div>
+							<input type="number" placeholder="0" class="loan-tenure" min="0"
+								step="0.1" />
+						</div>
+					</form>
 				</div>
 
-				<div class="group">
-					<div class="title">Interest Rate</div>
-					<input type="number" placeholder="0" class="interest-rate" min="0"
-						step="0.01" />
-				</div>
+				<div class="result">
+					<div class="left">
+						<div class="loan-emi">
+							<h3>Loan EMI</h3>
+							<div class="value">123</div>
+						</div>
 
-				<div class="group">
-					<div class="title">Tenure (in years)</div>
-					<input type="number" placeholder="0" class="loan-tenure" min="0"
-						step="0.1" />
-				</div>
-			</form>
-		</div>
+						<div class="total-interest">
+							<h3>Total Interest Payable</h3>
+							<div class="value">1234</div>
+						</div>
 
-		<div class="result">
-			<div class="left">
-				<div class="loan-emi">
-					<h3>Loan EMI</h3>
-					<div class="value">123</div>
-				</div>
+						<div class="total-amount">
+							<h3>Total Amount</h3>
+							<div class="value">12345</div>
+						</div>
 
-				<div class="total-interest">
-					<h3>Total Interest Payable</h3>
-					<div class="value">1234</div>
-				</div>
+						<button class="calculate-btn">Calculate</button>
+					</div>
 
-				<div class="total-amount">
-					<h3>Total Amount</h3>
-					<div class="value">12345</div>
+					<div class="right">
+						<canvas id="myChart" width="400" height="400"></canvas>
+					</div>
 				</div>
-
-				<button class="calculate-btn">Calculate</button>
 			</div>
 
-			<div class="right">
-				<canvas id="myChart" width="400" height="400"></canvas>
-			</div>
-		</div>
-	</div>
-</div>
+		</section>
+	</main>
 	<script
 		src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
 
@@ -333,19 +349,6 @@ init();
 
 calculateBtn.addEventListener("click", init);
 </script>
-<script>
-  const bgImg = new Image();
-  bgImg.src = 'assets/img/emibg.jpg';
 
-  bgImg.onload = function () {
-    const wrapper = document.querySelector('.background-wrapper');
-    wrapper.style.backgroundImage = "url('assets/img/emibg.jpg')";
-    wrapper.style.backgroundSize = "cover";
-    wrapper.style.backgroundPosition = "center";
-    wrapper.style.backgroundRepeat = "no-repeat";
-    wrapper.style.display = "block";
-  };
-</script>
 </body>
 </html>
-
