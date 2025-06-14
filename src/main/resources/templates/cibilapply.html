@@ -201,7 +201,7 @@
       cibilscore: parseInt(document.getElementById('cibilscore').value)
     };
 
-    fetch('http://localhost:8080/api/defaulters', {
+    fetch('/api/defaulters', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -219,7 +219,7 @@
         business: document.getElementById("business").value
       };
 
-      fetch("http://localhost:8080/api/partners", {
+      fetch("/api/partners", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

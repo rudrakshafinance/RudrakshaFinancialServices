@@ -173,7 +173,7 @@ document.getElementById('home-loan-form').addEventListener('submit', async funct
 
     try {
         // 2. Send data to backend
-        const response = await fetch('http://localhost:8080/api/apply/BT+TopUp', {
+        const response = await fetch('/api/apply/BT+TopUp', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

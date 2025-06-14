@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = { username, mobile, profile, sourcePage };
 
       try {
-        const response = await fetch("http://localhost:8080/api/forms/submit", {
+        const response = await fetch("/api/forms/submit", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
